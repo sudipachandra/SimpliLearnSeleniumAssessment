@@ -8,14 +8,20 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 public class CreateAccount {
 	static WebDriver driver = null;
-	public static void main(String[] args) throws InterruptedException{
+	@BeforeMethod
+	public void LaunchBrowser(){
 		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("http://automationpractice.com/index.php");
+		}
+	@Test
+	public void enterAccountDetails() throws InterruptedException {
 		WebElement signInBtn = driver.findElement(By.className("login"));
 		signInBtn.click();
 		WebElement emailAddressBtn = driver.findElement(By.id("email_create"));
@@ -28,7 +34,7 @@ public class CreateAccount {
 		 * if(gender.getAttribute("id").equals("uniform-id_gender1")) {
 		 * if(!gender.isSelected()) { gender.click(); break; } } }
 		 */
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		Random rnd = new Random();
 		int genderSuffix = rnd.nextInt(1) + 1;
 		WebElement gender = driver.findElement(By.id("id_gender" + genderSuffix));
@@ -72,7 +78,5 @@ public class CreateAccount {
 	    driver.findElement(By.id("alias")).sendKeys("midnapore");
 	    //Thread.sleep(3000);
 	    driver.findElement(By.id("submitAccount")).click();
-	    
 	}
-
 }
