@@ -27,6 +27,5 @@ public class LogOut {
 		 passWordBtn.sendKeys("sriyansh123");
 		 driver.findElement(By.id("SubmitLogin")).click();
 		 driver.findElement(By.linkText("Sign out")).click();
-	}
-	 
+	} 
 }
