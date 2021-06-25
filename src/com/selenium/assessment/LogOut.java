@@ -28,4 +28,5 @@ public class LogOut {
 		 driver.findElement(By.id("SubmitLogin")).click();
 		 driver.findElement(By.linkText("Sign out")).click();
 	} 
+	 
 }
