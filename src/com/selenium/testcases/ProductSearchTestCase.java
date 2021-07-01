@@ -11,15 +11,19 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.selenium.pages.SearchBox;
 import com.selenium.pages.SignInPage;
 import com.selenium.utils.ExcelReader;
 
 public class ProductSearchTestCase {
-	public WebDriver driver=null;
+	private WebDriver driver;
+	private SearchBox searchBox;
+	
 	@BeforeClass
-	public void LaunchBrowser(){
+	public void launchBrowser() {
 		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
 		driver = new ChromeDriver();
+		searchBox = new SearchBox(driver);
 		driver.get("http://automationpractice.com/index.php");
 		//maximize my window
 		driver.manage().window().maximize();
@@ -28,9 +32,7 @@ public class ProductSearchTestCase {
 	public void searchProduct(Hashtable<String,String> data) throws InterruptedException {
 		SignInPage signInPage = new SignInPage(driver);
 		Thread.sleep(3000);
-		signInPage.searchTextBox.clear();
-		signInPage.searchTextBox.sendKeys(data.get("searchvalue"));
-		signInPage.searchBtn.click();
+		searchBox.search(data.get("searchvalue"));
 		String actualResult = signInPage.resultBox.getText();
 		System.out.println("the expected result is: "+ actualResult);
 		String expectResult = data.get("expectedno");

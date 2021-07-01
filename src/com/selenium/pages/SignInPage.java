@@ -8,40 +8,40 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 public class SignInPage {
-@FindBy(className="login")
-public WebElement signInBtn;
-@FindBy(id="search_query_top")
-public WebElement searchTextBox;
-@FindBy(name="submit_search")
-public WebElement searchBtn;
-@FindBy(className="heading-counter")
-public WebElement resultBox;
+	@FindBy(className = "login")
+	public WebElement signInBtn;
+	@FindBy(className = "heading-counter")
+	public WebElement resultBox;
+
+	private SearchBox searchBox;
 
 //@FindBy(className="page-heading product-listing")
 //public WebElement productListHeader;
-WebDriver driver =null;
-public SignInPage(WebDriver driver) {
-	this.driver=driver;
-   PageFactory.initElements(driver,this);
-}
-public void productSearch(String productValue) {
-	searchTextBox.sendKeys(productValue);
-	searchBtn.click();
-	//String resultValue = resultBox.getText();
-	
-	
-}
-public LoginPage signInLinkClick() {
-	signInBtn.click();
-	return new LoginPage(driver);
-}
-public ManufacturerPage searchClick() {
-	searchBtn.click();
-	return new ManufacturerPage(driver);
-}
-/*public void selectManufacturer() throws InterruptedException {
-	Thread.sleep(3000);
-	Select select = new Select(manufacturerSelectBox);
-	select.deselectByVisibleText("Fashion Manufacturer");
-}*/
+	WebDriver driver = null;
+
+	public SignInPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+		this.searchBox = new SearchBox(driver);
+	}
+
+	public void productSearch(String productValue) {
+		searchBox.search(productValue);
+
+	}
+
+	public LoginPage signInLinkClick() {
+		signInBtn.click();
+		return new LoginPage(driver);
+	}
+
+	public ManufacturerPage searchClick() {
+		searchBox.search();
+		return new ManufacturerPage(driver);
+	}
+	/*
+	 * public void selectManufacturer() throws InterruptedException {
+	 * Thread.sleep(3000); Select select = new Select(manufacturerSelectBox);
+	 * select.deselectByVisibleText("Fashion Manufacturer"); }
+	 */
 }
