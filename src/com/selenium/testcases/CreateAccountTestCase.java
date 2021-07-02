@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.selenium.pages.AccountDetailsPage;
-import com.selenium.pages.HomePage;
+import com.selenium.pages.SignOutPage;
 import com.selenium.pages.LoginPage;
 import com.selenium.pages.SignInPage;
 
@@ -30,7 +30,7 @@ public void signIn() throws InterruptedException {
 	AccountDetailsPage accountDetailsPage = signin.signInLinkClick().createAnAccountClick();
 	accountDetailsPage.accountDetails();
 	accountDetailsPage.submitClick();
-	HomePage homePage = new HomePage(driver);
+	SignOutPage homePage = new SignOutPage(driver);
 	String actualMsg = homePage.successMsg.getText();
 	String expectedMsg = "Welcome to your account. Here you can manage all of your personal information and orders.";
 	Assert.assertEquals(actualMsg, expectedMsg);

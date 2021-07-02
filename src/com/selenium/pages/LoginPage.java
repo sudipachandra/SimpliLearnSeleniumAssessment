@@ -37,8 +37,8 @@ WebDriver driver = null;
 	passWordBtn.sendKeys("passward");
 }*/
 
-public HomePage submitBtnclick() {
+public SignOutPage submitBtnclick() {
 	submitBtn.click();
-	return new HomePage(driver);
+	return new SignOutPage(driver);
 }
 }

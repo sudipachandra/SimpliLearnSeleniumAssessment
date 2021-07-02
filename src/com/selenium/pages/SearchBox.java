@@ -39,27 +39,6 @@ public class SearchBox {
 	public ProductPage selectProduct() {
 		Actions action = new Actions(driver);
 		action.moveToElement(particularProduct).click(moreBtn).build().perform();
-		/*
-		 * System.out.println("moved to element"); WebDriverWait wait =new
-		 * WebDriverWait(driver,60);
-		 * wait.until(ExpectedConditions.elementToBeClickable(moreBtn));
-		 * System.out.println("wait over"); action.moveToElement(moreBtn);
-		 * System.out.println("move to element more button");
-		 * action.click().build().perform();
-		 * System.out.println("action click performed");
-		 */
-		//particularProduct.click();
-		/*WebDriverWait wait =new WebDriverWait(driver,60);
-		try
-		{
-			wait.until(ExpectedConditions.presenceOfElementLocated((By) moreBtn));
-				
-			Actions action = new Actions(driver);
-			action.moveToElement(moreBtn).click().build().perform();
-		}catch(NoSuchElementException e){
-			System.out.println("Printer Element - Not found");
-		}*/
-		
 		return new ProductPage(driver);
 	}
 	

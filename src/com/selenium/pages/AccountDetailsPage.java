@@ -79,9 +79,9 @@ public class AccountDetailsPage {
 		    phNo.sendKeys("9474506453");
 		    alias.sendKeys("midnapore");
 	}
-	public HomePage submitClick() {
+	public SignOutPage submitClick() {
 		submitBtn.click();
-		return new HomePage(driver);
+		return new SignOutPage(driver);
 	}
 	
 }

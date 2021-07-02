@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.selenium.pages.HomePage;
+import com.selenium.pages.SignOutPage;
 import com.selenium.pages.LoginPage;
 import com.selenium.pages.SignInPage;
 import com.selenium.utils.ExcelReader;
@@ -35,7 +35,7 @@ public class ValidUserTestCase {
 		loginpage.emailBtn.sendKeys(data.get("username"));
 		loginpage.passWordBtn.sendKeys(data.get("passward"));
 		loginpage.submitBtnclick();
-		HomePage homepage = new HomePage(driver);
+		SignOutPage homepage = new SignOutPage(driver);
 		homepage.singOutClick();
 		
 		

@@ -2,8 +2,6 @@ package com.selenium.pages;
 
 import java.util.Iterator;
 import java.util.Set;
-
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,7 +12,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ProductPage {
 WebDriver driver=null;
-//@FindBy(xpath="/html/body/div/div[2]/div/div[4]/div/div/div/div[3]/div[3]/ul")
+@FindBy(xpath="/html/body/div/div[2]/div/div[3]/div/div/div/div[3]/p[7]/button[2]")
+public WebElement facebookBtn;
 @FindBy(xpath="/html/body/div/div[2]/div/div[4]/div/div/div/div[3]/div[3]/ul/li/a")
 	public WebElement reviewTextLink; 
 @FindBy(xpath="//*[@id=\"content\"]")
@@ -28,10 +27,12 @@ public WebElement starBoxValue;
 @FindBy(xpath="/html/body/div[2]/div/div/div/div/div/form/div/div[2]/div[2]/p[2]/button/span")
 public WebElement sendBtn;
 @FindBy(xpath="/html/body/div[2]/div/div/div/p[2]/button")
-//@FindBy(xpath="//*[@id=\"product\"]/div[2]/div/div/div/p[2]")
-//@FindBy(xpath="/html/body/div[2]/div/div/div/p[2]/button")
-//@FindBy(xpath="/html/body/div[2]/div/div/div/p[2]/button/span")
 public WebElement okBtn;
+@FindBy(xpath="/html/body/div[1]/div/div/form/div[3]/div[2]/table/tbody/tr/td/button[1]")
+public WebElement cancelBtn;
+@FindBy(xpath="/html/body/div/div[2]/div/div[3]/div/div/div/div[3]/h1")
+public WebElement verifyMsg;
+
 public ProductPage(WebDriver driver) {
 	this.driver=driver;
 	PageFactory.initElements(driver,this);
@@ -44,59 +45,38 @@ public void productReview() {
 	Iterator<String> s1 = s.iterator();
 	while(s1.hasNext()) {
 		String childWindow = s1.next();
-		
-		//String subWindow = s1.next();
 	   System.out.println("the value of child window is:"+childWindow);
 if(!parent.equalsIgnoreCase(childWindow)) {
 		driver.switchTo().window(childWindow);
 		WebDriverWait wait = new WebDriverWait(driver,30);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"content\"]")));
+		
 	}
 	}
 }
-}
-
-/*public void alertExcept() throws InterruptedException {
-	sendBtn.click();
+public void facebookShare() throws InterruptedException {
+	facebookBtn.click();
 	String parent = driver.getWindowHandle();
-	System.out.println("the value of parent window is: "+parent);
+	System.out.println("the value of parent window: "+parent);
 	Set<String> s = driver.getWindowHandles();
 	Iterator<String> s1 = s.iterator();
 	while(s1.hasNext()) {
 		String childWindow = s1.next();
-		
-		//String subWindow = s1.next();
 	   System.out.println("the value of child window is:"+childWindow);
 if(!parent.equalsIgnoreCase(childWindow)) {
-	System.out.println("if condition passed");
 		driver.switchTo().window(childWindow);
-		WebDriverWait wait = new WebDriverWait(driver,30);
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"product\"]/div[2]/div/div/div/p[2]")));
+		Thread.sleep(3000);
+		//WebDriverWait wait = new WebDriverWait(driver,30);
+		//wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[1]/div/div/form/div[3]/div[2]/table/tbody/tr/td/button[1]")));
+		//cancelBtn.click();
+		driver.close();
 	}
-    okBtn.click();
-    System.out.println("the ok button is clicked");
-    
 	}
-	/*Alert a = driver.switchTo().alert();
-	WebDriverWait wait = new WebDriverWait(driver,30);
-	wait.until(ExpectedConditions.alertIsPresent());
-	String name = a.getText();
-	System.out.println("the value of name is: "+name);
-	Thread.sleep(4000);
-	a.accept();*/
-	/* try{ 
-	        Alert a = new WebDriverWait(driver, 30).until(ExpectedConditions.alertIsPresent());
-	        if(a!=null){
-	            System.out.println("Alert is present");
-	            driver.switchTo().alert().accept();
-	        }else{
-	            throw new Throwable();
-	        }
-	    } 
-	    catch (Throwable e) {
-	        System.err.println("Alert isn't present!!");
-	    } */
-	
+	driver.switchTo().window(parent);
+}
+
+}
+
 
 
 

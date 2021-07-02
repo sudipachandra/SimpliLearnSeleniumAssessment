@@ -11,7 +11,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.selenium.pages.HomePage;
+import com.selenium.pages.SignOutPage;
 import com.selenium.pages.LoginPage;
 import com.selenium.pages.ProductPage;
 import com.selenium.pages.SearchBox;
@@ -41,11 +41,12 @@ public class WriteReviewTestCase {
 		loginpage.emailBtn.sendKeys(data.get("username"));
 		loginpage.passWordBtn.sendKeys(data.get("passward"));
 		loginpage.submitBtnclick();
+		
 	}
 
 	@Test(priority=2, dataProvider = "getSearchdetails", dependsOnMethods= {"reviewProduct"})
 	public void reviewProduct1(Hashtable<String, String> data1) throws InterruptedException {
-		HomePage homePage = new HomePage(driver);
+		SignOutPage homePage = new SignOutPage(driver);
 		System.out.println("the search value is:"+data1.get("SearchName"));
 		homePage.search(data1.get("SearchName"));
 		Thread.sleep(4000);
