@@ -24,11 +24,11 @@ public void LaunchBrowser(){
 	driver.manage().window().maximize();
 }
 
-@Test
+
 public void signIn() throws InterruptedException {
 	SignInPage signin = new SignInPage(driver);
 	AccountDetailsPage accountDetailsPage = signin.signInLinkClick().createAnAccountClick();
-	accountDetailsPage.accountDetails();
+	accountDetailsPage.accountDetails("United States","00000");
 	accountDetailsPage.submitClick();
 	SignOutPage homePage = new SignOutPage(driver);
 	String actualMsg = homePage.successMsg.getText();
@@ -36,4 +36,28 @@ public void signIn() throws InterruptedException {
 	Assert.assertEquals(actualMsg, expectedMsg);
    System.out.println("test pass");
 }
+
+public void createAccountWithoutCountry() throws InterruptedException {
+	SignInPage signin = new SignInPage(driver);
+	AccountDetailsPage accountDetailsPage = signin.signInLinkClick().createAnAccountClick();
+	accountDetailsPage.accountDetails("-","");
+	accountDetailsPage.submitClick();
+	SignOutPage homePage = new SignOutPage(driver);
+	String actualMsg = homePage.failMsgForCountry.getText();
+	String expectedMsg = "id_country is required.";
+	Assert.assertEquals(actualMsg, expectedMsg);
+}
+
+@Test
+public void createAccountWithCountryInvalidPostcode() throws InterruptedException {
+	SignInPage signin = new SignInPage(driver);
+	AccountDetailsPage accountDetailsPage = signin.signInLinkClick().createAnAccountClick();
+	accountDetailsPage.accountDetails("United States","000");
+	accountDetailsPage.submitClick();
+	SignOutPage homePage = new SignOutPage(driver);
+    String actualMsg = homePage.failMsgForPostcode.getText();
+	String expectedMsg = "The Zip/Postal code you've entered is invalid. It must follow this format: 00000";
+	Assert.assertEquals(actualMsg, expectedMsg);
+}
+
 }

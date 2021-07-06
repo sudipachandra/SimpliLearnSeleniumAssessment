@@ -58,7 +58,7 @@ public void addCart3() {
 	Actions action = new Actions(driver);
 	action.moveToElement(product3).click(addToCart3).build().perform();
 }
-public void faceBookShare() {
+public void Share() {
 	Actions action = new Actions(driver);
 	action.moveToElement(product3).click(moreBtn3).build().perform();
 }

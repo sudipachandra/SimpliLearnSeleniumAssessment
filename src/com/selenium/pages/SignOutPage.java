@@ -12,8 +12,11 @@ public class SignOutPage {
 	public WebElement signOutBtn;
 	@FindBy(xpath="/html/body/div/div[2]/div/div[1]/a")
 	public WebElement homeIconBtn;
-	
-	private SearchBox searchBox;
+	@FindBy(xpath="//*[@id=\"center_column\"]/div/ol/li[1]")
+	public WebElement failMsgForCountry;
+	@FindBy(xpath="//*[@id=\"center_column\"]/div/ol/li")
+	public WebElement failMsgForPostcode;
+		private SearchBox searchBox;
 
 	// String expectedMsg = "Welcome to your account. Here you can manage all of
 	// your personal information and orders.";

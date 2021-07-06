@@ -42,7 +42,7 @@ public void facebookShare(Hashtable<String, String> data) throws InterruptedExce
 	SignOutPage signOutPage = new SignOutPage(driver);
 	signOutPage.goToHomePage();
 	HomePage homePage = new HomePage(driver);
-	homePage.faceBookShare();
+	homePage.Share();
 	ProductPage productPage = new ProductPage(driver);
 	//productPage.facebookBtn.click();
 	productPage.facebookShare();
