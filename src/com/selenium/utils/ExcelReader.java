@@ -33,6 +33,7 @@ public class ExcelReader {
 			 Row dataRow = sheet.getRow(r);
 			 rec = new Hashtable<String,String>();
 			 for(int c = 0; c<dataRow.getLastCellNum();c++){
+				 System.out.println(keysRow.getCell(c).getStringCellValue());
 				 String key = keysRow.getCell(c).getStringCellValue();
 				 String val = dataRow.getCell(c).getStringCellValue();
 				 rec.put(key, val);

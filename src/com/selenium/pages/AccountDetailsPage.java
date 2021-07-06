@@ -1,5 +1,6 @@
 package com.selenium.pages;
 
+import java.util.Hashtable;
 import java.util.Random;
 
 import org.openqa.selenium.By;
@@ -53,36 +54,39 @@ public class AccountDetailsPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	public void accountDetails(String countryValue,String postCodeValue) throws InterruptedException {
+	public void fillAccountDetails(Hashtable<String, String> data) throws InterruptedException {
 		Thread.sleep(5000);
+		
 		Random rnd = new Random();
 		boolean isGenderFemale = rnd.nextBoolean();
 		WebElement gender = isGenderFemale ? genderFemale : genderMale;
 		System.out.println(gender);
 		gender.click();
-		firstNameBtn.sendKeys("sriyansh");
-		lastNameBtn.sendKeys("roy");
-		passWord.sendKeys("sudipa123");
+		firstNameBtn.sendKeys(data.get("firstname"));
+		lastNameBtn.sendKeys(data.get("lastname"));
+		passWord.sendKeys(data.get("passward"));
 		Select day = new Select(days);
-		day.selectByValue("16");
+		day.selectByValue(data.get("days"));
 		Select month = new Select(months);
-		month.selectByValue("4");
+		month.selectByValue(data.get("month"));
 		Select year = new Select(years);
-		year.selectByValue("2016");
-		companyBtn.sendKeys("reliance");
-		addressBtn.sendKeys("keranitola,midnapore,721101");
-		address2.sendKeys("creative apartment");
-		cityBtn.sendKeys("bangalore");
+		year.selectByValue(data.get("years"));
+		companyBtn.sendKeys(data.get("company"));
+		addressBtn.sendKeys(data.get("address1"));
+		address2.sendKeys(data.get("address2"));
+		cityBtn.sendKeys("city");
 		Select state = new Select(stateBtn);
-		state.selectByValue("9");
+		state.selectByValue(data.get("state"));
+		phNo.sendKeys(data.get("phno"));
+		alias.sendKeys(data.get("alias"));
+		
+		String countryValue = data.get("country");
+		String postCodeValue = data.get("postcode");
 		Select country = new Select(countryBtn);
 		country.selectByVisibleText(countryValue);
 		if (!"-".equals(countryValue)) {
 			postCode.sendKeys(postCodeValue);
 		}
-		
-		phNo.sendKeys("9474506453");
-		alias.sendKeys("midnapore");
 	}
 
 	public SignOutPage submitClick() {

@@ -15,8 +15,6 @@ public class SignInPage {
 
 	private SearchBox searchBox;
 
-//@FindBy(className="page-heading product-listing")
-//public WebElement productListHeader;
 	WebDriver driver = null;
 
 	public SignInPage(WebDriver driver) {
@@ -31,6 +29,7 @@ public class SignInPage {
 	}
 
 	public LoginPage signInLinkClick() {
+		System.out.println("chekingggg");
 		signInBtn.click();
 		return new LoginPage(driver);
 	}

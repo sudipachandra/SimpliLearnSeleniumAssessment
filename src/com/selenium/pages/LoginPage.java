@@ -23,9 +23,7 @@ WebDriver driver = null;
 		this.driver=driver;
 		   PageFactory.initElements(driver,this);
 	}
-	/*public void loginDetails(String username) {
-		emailAddressBtn.sendKeys("sriyansh" + System.currentTimeMillis() + "@csn.com");
-	}*/
+	
 	public AccountDetailsPage createAnAccountClick() throws InterruptedException {
 		Thread.sleep(5000);
 		emailAddressBtn.sendKeys("sriyansh" + System.currentTimeMillis() + "@csn.com");

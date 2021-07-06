@@ -21,7 +21,7 @@ public class ProductPage {
 	public WebElement googleBtn;
 	@FindBy(xpath = "/html/body/div/div[2]/div/div[3]/div/div/div/div[3]/p[7]/button[4]")
 	public WebElement pinterestBtn;
-	@FindBy(xpath = "/html/body/div/div[2]/div/div[4]/div/div/div/div[3]/div[3]/ul/li/a")
+	@FindBy(xpath="//*[@id=\"product_comments_block_extra\"]/ul/li")
 	public WebElement reviewTextLink;
 	@FindBy(xpath = "//*[@id=\"content\"]")
 	public WebElement commentBox;
@@ -38,9 +38,7 @@ public class ProductPage {
 	@FindBy(xpath = "/html/body/div[1]/div/div/form/div[3]/div[2]/table/tbody/tr/td/button[1]")
 	public WebElement cancelBtn;
 	@FindBy(xpath = "/html/body/div/div[2]/div/div[3]/div/div/div/div[3]/h1")
-	public WebElement verifyMsg;
-
-	// /html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div/form/span/section/div/div/div[1]/div/div[1]/div/div[1]/input
+	public WebElement verifyMsg;                   
 	@FindBy(xpath = "/html/body/div[1]/div[1]/div[2]/div/div[2]/div/div/div[2]/div/div[1]/div/form/span/section/div/div/div[1]/div/div[1]/div/div[1]/input")
 	public WebElement emailBox;
 	@FindBy(xpath="/html/body/div[1]/div[1]/div/div/div/div/div[2]/div[2]/div/div/div/div/div/div/div/div/div[3]/div/div/div[3]/form/div[1]/fieldset/span/div/input")
@@ -57,7 +55,7 @@ public class ProductPage {
 
 	public void productReview() {
 		reviewTextLink.click();
-		String parent = driver.getWindowHandle();
+		/*String parent = driver.getWindowHandle();
 		System.out.println("the value of parent window is: " + parent);
 		Set<String> s = driver.getWindowHandles();
 		Iterator<String> s1 = s.iterator();
@@ -70,7 +68,7 @@ public class ProductPage {
 				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"content\"]")));
 
 			}
-		}
+		}*/
 	}
 
 	public void facebookShare() throws InterruptedException {

@@ -46,9 +46,9 @@ public class PinterestTestCase {
 		String userName = data.get("username");
 		String passWard = data.get("passward");
 		productPage.pinterestShare(userName,passWard);
-		/*String actualMsg = productPage.verifyMsg.getText();
+		String actualMsg = productPage.verifyMsg.getText();
     	String expectedMsg = "Printed Dress";
-    	Assert.assertEquals(actualMsg, expectedMsg);*/
+    	Assert.assertEquals(actualMsg, expectedMsg);
 }
 	@DataProvider
 	public Object[][] getLogindetails() throws IOException {

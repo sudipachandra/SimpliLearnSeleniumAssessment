@@ -32,5 +32,8 @@
 	<classpathentry kind="lib" path="C:/Users/Sudipa chandra/poi-3.16/poi-ooxml-3.16.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Sudipa chandra/poi-3.16/poi-ooxml-schemas-3.16.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Sudipa chandra/poi-3.16/poi-scratchpad-3.16.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sudipa chandra/velocity-dep-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sudipa chandra/reportng-1.1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Sudipa chandra/guice-3.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

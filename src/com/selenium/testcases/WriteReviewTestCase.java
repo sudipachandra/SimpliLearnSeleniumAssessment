@@ -12,6 +12,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.selenium.pages.SignOutPage;
+import com.selenium.pages.HomePage;
 import com.selenium.pages.LoginPage;
 import com.selenium.pages.ProductPage;
 import com.selenium.pages.SearchBox;
@@ -41,10 +42,18 @@ public class WriteReviewTestCase {
 		loginpage.emailBtn.sendKeys(data.get("username"));
 		loginpage.passWordBtn.sendKeys(data.get("passward"));
 		loginpage.submitBtnclick();
+		SignOutPage signOutPage = new SignOutPage(driver);
+		signOutPage.goToHomePage();
+		HomePage homePage = new HomePage(driver);
+		homePage.Share();
+		Thread.sleep(5000);
+		ProductPage productPage = new ProductPage(driver);
+		productPage.productReview();
+		System.out.println("review button clicked");
 		
 	}
 
-	@Test(priority=2, dataProvider = "getSearchdetails", dependsOnMethods= {"reviewProduct"})
+	/*@Test(priority=2, dataProvider = "getSearchdetails", dependsOnMethods= {"reviewProduct"})
 	public void reviewProduct1(Hashtable<String, String> data1) throws InterruptedException {
 		SignOutPage homePage = new SignOutPage(driver);
 		System.out.println("the search value is:"+data1.get("SearchName"));
@@ -55,8 +64,8 @@ public class WriteReviewTestCase {
 		Thread.sleep(3000);
 		productPage.productReview();
 		System.out.println("review button clicked");
-	}
-	@Test(priority=3, dataProvider = "giveReview", dependsOnMethods= {"reviewProduct1"})
+	}*/
+	@Test(priority=2, dataProvider = "giveReview", dependsOnMethods= {"reviewProduct"})
 	public void writeReview(Hashtable<String,String> data2) throws InterruptedException {
 		ProductPage productPage = new ProductPage(driver);
 		Thread.sleep(4000);
