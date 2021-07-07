@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="SimplilearnAssessmentproject">
-<listeners>
-<listener class-name="org.uncommons.reportng.HTMLReporter" />
-<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
-</listeners>
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener
+			class-name="org.uncommons.reportng.JUnitXMLReporter" />
+	</listeners>
 
 	<test name="testngTest">
 		<classes>
-		<class name="com.selenium.testcases.CreateAccountTestCase"/>
-		<class name="com.selenium.testcases.InvalidUserTestCase"/>
-		<class name="com.selenium.testcases.FaceBookShareTestCase"/>
-		<class name="com.selenium.testcases.GoogleShareTestCase"/>
-		<class name="com.selenium.testcases.LogOffTestCase"/>
-		<class name="com.selenium.testcases.ManufacturerTestCase"/>
-		<class name="com.selenium.testcases.PinterestTestCase"/>
-		<class name="com.selenium.testcases.PlacingOrderTestCase"/>
-		<class name="com.selenium.testcases.ProductSearchTestCase"/>
-		<class name="com.selenium.testcases.ValidUserTestCase"/>
-		<class name="com.selenium.testcases.WriteReviewTestCase"/>
-		
-	  </classes>
+			<class name="com.selenium.testcases.CreateAccountTestCase" />
+			<class name="com.selenium.testcases.InvalidUserTestCase" />
+			<class name="com.selenium.testcases.FaceBookShareTestCase" />
+			<class name="com.selenium.testcases.GoogleShareTestCase" />
+			<class name="com.selenium.testcases.LogOffTestCase" />
+			<class name="com.selenium.testcases.ManufacturerTestCase" />
+			<class name="com.selenium.testcases.PinterestTestCase" />
+			<class name="com.selenium.testcases.PlacingOrderTestCase" />
+			<class name="com.selenium.testcases.ProductSearchTestCase" />
+			<class name="com.selenium.testcases.ValidUserTestCase" />
+			<class name="com.selenium.testcases.WriteReviewTestCase" />
+		</classes>
 	</test>
 </suite>
