@@ -29,6 +29,8 @@ public class ProductPage {
 	public WebElement titleBox;
 	@FindBy(xpath = "/html/body/div[2]/div/div/div/div/div/form/div/div[2]/ul/li/div[2]")
 	public WebElement starBox;
+	//@FindBy(xpath="//*[@id=\"criterions_list\"]/li/div[1]/div[4]/a")
+	
 	@FindBy(xpath = "/html/body/div[2]/div/div/div/div/div/form/div/div[2]/ul/li/div[1]/div[4]/a")
 	public WebElement starBoxValue;
 	@FindBy(xpath = "/html/body/div[2]/div/div/div/div/div/form/div/div[2]/div[2]/p[2]/button/span")
@@ -55,7 +57,7 @@ public class ProductPage {
 
 	public void productReview() {
 		reviewTextLink.click();
-		/*String parent = driver.getWindowHandle();
+		String parent = driver.getWindowHandle();
 		System.out.println("the value of parent window is: " + parent);
 		Set<String> s = driver.getWindowHandles();
 		Iterator<String> s1 = s.iterator();
@@ -68,7 +70,7 @@ public class ProductPage {
 				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"content\"]")));
 
 			}
-		}*/
+		}
 	}
 
 	public void facebookShare() throws InterruptedException {

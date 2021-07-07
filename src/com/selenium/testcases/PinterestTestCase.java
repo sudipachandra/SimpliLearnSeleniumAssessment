@@ -3,10 +3,13 @@ package com.selenium.testcases;
 import java.io.IOException;
 import java.util.Hashtable;
 
+import org.junit.AfterClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -19,7 +22,7 @@ import com.selenium.utils.ExcelReader;
 
 public class PinterestTestCase {
 	private WebDriver driver;
-	@BeforeClass
+	@BeforeMethod
 	public void LaunchBrowser() {
 		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
 		driver = new ChromeDriver();
@@ -59,4 +62,12 @@ public class PinterestTestCase {
 		String sheetname = "LoginDetails";
 		return ExcelReader.ReadExcelDataToObjArray(filepath, filename, sheetname);
 }
+	@AfterMethod
+	public void closeBrowser() throws InterruptedException {
+		Thread.sleep(3000);
+		if(driver!=null) {
+			driver.close();
+			driver.quit();
+		}
+	}
 }

@@ -7,7 +7,9 @@ import org.junit.AfterClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -19,7 +21,7 @@ public class ProductSearchTestCase {
 	private WebDriver driver;
 	private SearchBox searchBox;
 	
-	@BeforeClass
+	@BeforeMethod
 	public void launchBrowser() {
 		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
 		driver = new ChromeDriver();
@@ -48,7 +50,7 @@ public class ProductSearchTestCase {
 		String sheetname = "SearchValue";
 		return ExcelReader.ReadExcelDataToObjArray(filepath, filename, sheetname);
 	}
-	@AfterClass
+	@AfterMethod
 	public void closeBrowser() throws InterruptedException {
 		Thread.sleep(3000);
 		if(driver!=null) {

@@ -7,10 +7,14 @@ import java.util.Hashtable;
 import org.apache.poi.util.SystemOutLogger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -22,16 +26,18 @@ import com.selenium.pages.SignInPage;
 
 public class CreateAccountTestCase {
 WebDriver driver=null;
-@BeforeClass
+@BeforeMethod
 public void LaunchBrowser(){
 	System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
+	//System.setProperty("webdriver.gecko.driver", "./drivers/geckodriver.exe");
 	driver = new ChromeDriver();
+	//driver = new FirefoxDriver();
 	driver.get("http://automationpractice.com/index.php");
 	//maximize my window
 	driver.manage().window().maximize();
 }
 
-//@Test( dataProvider = "getLogindetails")
+@Test(priority = 1, dataProvider = "getLogindetails")
 public void signIn(Hashtable<String, String> data) throws InterruptedException {
 	System.out.println(data);
 	SignInPage signin = new SignInPage(driver);
@@ -45,7 +51,7 @@ public void signIn(Hashtable<String, String> data) throws InterruptedException {
 	Assert.assertEquals(actualMsg, expectedMsg);
    System.out.println("test pass");
 }
-//@Test(dataProvider = "getLogindetails")
+@Test(priority = 2, dataProvider = "getLogindetails")
 public void createAccountWithoutCountry(Hashtable<String,String> data) throws InterruptedException {
 	SignInPage signin = new SignInPage(driver);
 	AccountDetailsPage accountDetailsPage = signin.signInLinkClick().createAnAccountClick();
@@ -60,7 +66,7 @@ public void createAccountWithoutCountry(Hashtable<String,String> data) throws In
 	Assert.assertEquals(actualMsg, expectedMsg);
 }
 
-@Test(dataProvider = "getLogindetails")
+@Test(priority = 3, dataProvider = "getLogindetails")
 public void createAccountWithCountryInvalidPostcode(Hashtable<String,String> data) throws InterruptedException {
 	SignInPage signin = new SignInPage(driver);
 	AccountDetailsPage accountDetailsPage = signin.signInLinkClick().createAnAccountClick();
@@ -80,6 +86,14 @@ public Object[][] getLogindetails() throws IOException {
 	String filename = "LoginData.xlsx";
 	String sheetname = "CreateAccount";
 	return ExcelReader.ReadExcelDataToObjArray(filepath, filename, sheetname);
+}
+@AfterMethod
+public void CloseBrowser() throws InterruptedException{
+     Thread.sleep(3000);
+	if(driver!=null){
+		driver.close(); //close current active browser
+		driver.quit(); //all open browser launched via script
+	}
 }
 
 }

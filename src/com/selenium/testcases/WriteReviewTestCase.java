@@ -7,7 +7,10 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -77,7 +80,7 @@ public class WriteReviewTestCase {
 	productPage.okBtn.click();
 	}
 
-	@DataProvider
+	/*@DataProvider
 	public Object[][] getSearchdetails() throws IOException {
 		String ProjectPath = System.getProperty("user.dir");// this will return project current directory path
 		System.out.println("ProjectPath = " + ProjectPath);
@@ -85,7 +88,7 @@ public class WriteReviewTestCase {
 		String filename = "LoginData.xlsx";
 		String sheetname = "SearchData";
 		return ExcelReader.ReadExcelDataToObjArray(filepath, filename, sheetname);
-	}
+	}*/
 
 	@DataProvider
 	public Object[][] getLogindetails() throws IOException {
@@ -104,5 +107,14 @@ public class WriteReviewTestCase {
 		String filename = "LoginData.xlsx";
 		String sheetname = "ReviewData";
 		return ExcelReader.ReadExcelDataToObjArray(filepath, filename, sheetname);
+	}
+	
+	@AfterClass
+	public void closeBrowser() throws InterruptedException {
+		Thread.sleep(3000);
+		if(driver!=null) {
+			driver.close();
+			driver.quit();
+		}
 	}
 }

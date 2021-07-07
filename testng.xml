@@ -10,6 +10,16 @@
 		<classes>
 		<class name="com.selenium.testcases.CreateAccountTestCase"/>
 		<class name="com.selenium.testcases.InvalidUserTestCase"/>
+		<class name="com.selenium.testcases.FaceBookShareTestCase"/>
+		<class name="com.selenium.testcases.GoogleShareTestCase"/>
+		<class name="com.selenium.testcases.LogOffTestCase"/>
+		<class name="com.selenium.testcases.ManufacturerTestCase"/>
+		<class name="com.selenium.testcases.PinterestTestCase"/>
+		<class name="com.selenium.testcases.PlacingOrderTestCase"/>
+		<class name="com.selenium.testcases.ProductSearchTestCase"/>
+		<class name="com.selenium.testcases.ValidUserTestCase"/>
+		<class name="com.selenium.testcases.WriteReviewTestCase"/>
+		
 	  </classes>
 	</test>
 </suite>

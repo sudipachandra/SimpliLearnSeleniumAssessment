@@ -3,9 +3,12 @@ package com.selenium.testcases;
 import java.io.IOException;
 import java.util.Hashtable;
 
+import org.junit.AfterClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -19,7 +22,7 @@ import junit.framework.Assert;
 public class ManufacturerTestCase {
 	private WebDriver driver;
 	private SearchBox searchBox;
-	@BeforeClass
+	@BeforeMethod
 	public void LaunchBrowser(){
 		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
 		driver = new ChromeDriver();
@@ -60,5 +63,13 @@ public class ManufacturerTestCase {
 		String filename = "LoginData.xlsx";
 		String sheetname = "SearchData";
 		return ExcelReader.ReadExcelDataToObjArray(filepath, filename, sheetname);
+	}
+	@AfterMethod
+	public void closeBrowser() throws InterruptedException {
+		Thread.sleep(3000);
+		if(driver!=null) {
+			driver.close();
+			driver.quit();
+		}
 	}
 }

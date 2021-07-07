@@ -29,7 +29,6 @@ public class SignInPage {
 	}
 
 	public LoginPage signInLinkClick() {
-		System.out.println("chekingggg");
 		signInBtn.click();
 		return new LoginPage(driver);
 	}
