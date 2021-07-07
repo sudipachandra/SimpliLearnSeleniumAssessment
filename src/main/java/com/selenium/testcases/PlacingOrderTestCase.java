@@ -47,9 +47,11 @@ public class PlacingOrderTestCase {
 		homePage.addCart1();
 		Thread.sleep(4000);
 		homePage.continueBtn.click();
+		Thread.sleep(4000);
 		homePage.addCart2();
 		Thread.sleep(3000);
 		homePage.continueBtn.click();
+		Thread.sleep(4000);
 		homePage.addCart3();
 		Thread.sleep(5000);
 		homePage.proceedToCheckBtn.click();
