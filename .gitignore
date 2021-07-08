@@ -1,2 +1,7 @@
-/bin/
+.classpath
+.git
+.project
+.settings/
+bin/
+target/
 test-output/
