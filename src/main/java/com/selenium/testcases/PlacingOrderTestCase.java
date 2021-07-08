@@ -80,6 +80,7 @@ public class PlacingOrderTestCase {
 		String filepath = ProjectPath + "/src/main/java/com/selenium/testdata";
 		String filename = "LoginData.xlsx";
 		String sheetname = "LoginDetails";
+		
 		return ExcelReader.ReadExcelDataToObjArray(filepath, filename, sheetname);
 	}
 
